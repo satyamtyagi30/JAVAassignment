@@ -110,7 +110,7 @@ class  A
 
 _______________________________________________________________________________________________
 
-//TEST  PROGRAM  THAT USES CIRCLE CLASS FUNCTION
+//TEST  PROGRAM  THAT USES CYLINDER CLASS FUNCTION
 
 //file name: Test.java
 package b;
