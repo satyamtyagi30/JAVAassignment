@@ -1,0 +1,67 @@
+Given an array of size n and an integer number k, find the count of distinct numbers from a subarray of size k.
+
+Example: -
+
+Input1: arr[] = {1, 2, 1, 3, 4, 2, 3}; k = 4; n=7
+
+Output1: 3,4,4,3
+
+{1, 2, 1, 3} =>3
+
+{2, 1, 3, 4} =>4
+
+{1, 3, 4, 2} =>4
+
+{3, 4, 2, 3} =>3
+
+
+import java.util.Arrays;
+import java.util.Scanner;  
+
+class Test {
+    // Counts distinct elements in window of size k
+    static int countWindowDistinct(int win[], int k)
+    {
+        int dist_count = 0;
+  
+        // Traverse the window
+        for (int i = 0; i < k; i++) {
+            // Check if element arr[i] exists in arr[0..i-1]
+            int j;
+            for (j = 0; j < i; j++)
+                if (win[i] == win[j])
+                    break;
+            if (j == i)
+                dist_count++;
+        }
+        return dist_count;
+    }
+  
+    // Counts distinct elements in all windows of size k
+    static void countDistinct(int arr[], int n, int k)
+    {
+        // Traverse through every window
+        for (int i = 0; i <= n - k; i++)
+            System.out.println(countWindowDistinct(Arrays.copyOfRange(arr, i, arr.length), k));
+    }
+  
+    // Driver method
+    public static void main(String args[])
+    {
+
+	Scanner sc=new Scanner(System.in);  
+        System.out.print("Enter the number of elements you want to store: ");  
+	//reading the number of elements from the that we want to enter  
+	n=sc.nextInt();  
+	//creates an array in the memory of length 10  
+	int[] array = new int[50];  
+	System.out.println("Enter the elements of the array: ");  
+	for(int i=0; i<n; i++)  
+	{  
+	//reading array elements from the user   
+	array[i]=sc.nextInt();  
+	}  
+	int k= sc.nextInt();  
+        countDistinct(array, array.length, k);
+    }
+}
