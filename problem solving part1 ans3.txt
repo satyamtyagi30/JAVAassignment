@@ -3,7 +3,7 @@ Q3. Write an application that inputs three integers from the user and displays t
 
 import java.util.Scanner;
 
-// exercise 2.17
+
 public class ArithmeticSmallestLargest {
 
     public static void main(String[] args) {
