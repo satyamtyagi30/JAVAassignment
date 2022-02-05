@@ -8,6 +8,7 @@ Output2: Empty String
 
 import java.io.*;
 import java.util.*;
+import java.util.Scanner;  
  
 class GFG
 {
