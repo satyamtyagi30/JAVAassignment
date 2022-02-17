@@ -17,51 +17,53 @@ Output1: 3,4,4,3
 
 import java.util.Arrays;
 import java.util.Scanner;  
+import java.util.*;
 
-class Test {
-    // Counts distinct elements in window of size k
-    static int countWindowDistinct(int win[], int k)
-    {
-        int dist_count = 0;
-  
-        // Traverse the window
-        for (int i = 0; i < k; i++) {
-            // Check if element arr[i] exists in arr[0..i-1]
-            int j;
-            for (j = 0; j < i; j++)
-                if (win[i] == win[j])
-                    break;
-            if (j == i)
-                dist_count++;
-        }
-        return dist_count;
-    }
-  
-    // Counts distinct elements in all windows of size k
-    static void countDistinct(int arr[], int n, int k)
-    {
-        // Traverse through every window
-        for (int i = 0; i <= n - k; i++)
-            System.out.println(countWindowDistinct(Arrays.copyOfRange(arr, i, arr.length), k));
-    }
-  
-    // Driver method
-    public static void main(String args[])
-    {
 
-	Scanner sc=new Scanner(System.in);  
-        System.out.print("Enter the number of elements you want to store: ");  
-	//reading the number of elements from the that we want to enter  
-	n=sc.nextInt();  
-	//creates an array in the memory of length 10  
-	int[] array = new int[50];  
-	System.out.println("Enter the elements of the array: ");  
-	for(int i=0; i<n; i++)  
-	{  
-	//reading array elements from the user   
-	array[i]=sc.nextInt();  
-	}  
-	int k= sc.nextInt();  
-        countDistinct(array, array.length, k);
-    }
+public class Main {
+// ArrayList is present in java.util package. It provides us with dynamic arrays in Java. Though, it may be slower than standard arrays but //can be helpful in programs where lots of manipulation in the array is needed.
+
+public static ArrayList<Integer> solution(int[] arr, int k) {
+		ArrayList<Integer> ans = new ArrayList<>();
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		
+		int i =0;
+		while( i <= k-2) {
+			map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+			i++;
+		}
+		
+		i--;
+		int j = -1;
+		
+			while(i < arr.length -1) {
+			i++;
+			map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);//acquire
+			ans.add(map.size()); //count to distinct elements 
+			
+			//release
+			j++;
+			int freq = map.get(arr[j]);
+			if(freq == 1) {
+				map.remove(arr[j]);
+			}else {
+				map.put(arr[j], freq - 1);
+			}
+		}
+		return ans;
+	}
+	
+	
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int[] arr = new int[scn.nextInt()];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = scn.nextInt();
+		}
+		int k = scn.nextInt();  //size of window
+		ArrayList<Integer> ans = solution(arr,k);
+		for(int a : ans){
+			System.out.print(a + " ");
+		}
+	}
 }
