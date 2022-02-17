@@ -19,7 +19,7 @@ public class Date {
 	// This method is used to display the date, separated by /
 
 	public void displayDate() {
-		System.out.println("The current date is: \t" + year + "/" + month + "/0" + day);
+		System.out.println("The current date is: " + day + "/" + month + "/" + year);
 	}
 
 	// This method is used to get the value of variable day
