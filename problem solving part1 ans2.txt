@@ -3,67 +3,71 @@ Q1.Create a class called Date that includes three pieces of information as insta
 
 
 ANS:
-
-//filename: Date.java
-// Date class
 public class Date {
-private int month;
-private int day;
-private int year;
-public Date(int myMonth,int myDay, int myYear) {
+	private int day;
+	private int month;
+	private int year;
 
-month = myMonth;
-day = myDay;
-year = myYear;
+	// This parameterized constructor is used to set the values of instance variables
+
+	public Date(int day, int month, int year) {
+		this.day = day;
+		this.month = month;
+		this.year = year;
+	}
+
+	// This method is used to display the date, separated by /
+
+	public void displayDate() {
+		System.out.println("The current date is: \t" + year + "/" + month + "/0" + day);
+	}
+
+	// This method is used to get the value of variable day
+
+	public int getDay() {
+		return day;
+	}
+
+	// This method is used to set the value of variable day
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	// This method is used to get the value of variable month
+
+	public int getMonth() {
+		return month;
+	}
+
+	// This method is used to set the value of variable month
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	// This method is used to get the value of variable year
+
+	public int getYear() {
+		return year;
+	}
+
+	// This method is used to set the value of variable year
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
 }
 
-public void setMonthDate(int myMonth) {
-month = myMonth;
-}
-
-public int getMonthDate() {
-return month;
-}
-
-public void setDayDate(int myDay) {
-day = myDay;
-}
-
-public int getDayDate() {
-return month;
-}
-
-public void setYearDate(int myYear) {
-year = myYear;
-}
-
-public int getYearDate() {
-return year;
-}
-
-public void displayDate() {
-System.out.printf(“%d/%d/%d”, month,day,year);
-}
-}
-//filename: DateTest.java
-// Date testing class with the main() method
-import java.util.*;
 public class DateTest {
-public static void main(String[] args) {
-Scanner input = new Scanner(System.in);
-Date myDate = new Date(9, 11, 1986);
 
-System.out.println(“Enter The Month”);
-int myMonth = input.nextInt();
-myDate.setMonthDate(myMonth);
+	public static void main(String[] args) {
+		Date date=new Date(18,11,2020);
+		date.displayDate();
+		date.setDay(25);
+		date.setMonth(1);
+		date.setYear(2021);
+		date.displayDate();
+	}
 
-System.out.println(“Enter the Date”);
-int myDay = input.nextInt();
-myDate.setDayDate(myDay);
-
-System.out.println(“Enter the Year”);
-int myYear = input.nextInt();
-myDate.setYearDate(myYear);
-myDate.displayDate();
-}
 }
