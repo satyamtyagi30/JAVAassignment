@@ -12,124 +12,56 @@ write a test program to test Cylinder class and its features.
 ANS:
 
 
-//file name: Circle.java
-package Classtest;
 
-public class Circle
-{  
+
+importjava.util.*;
+importjava.io.*;
+
+class Circle {
+
+    double radius;
+    public Circle(double r)
+    {
+    radius=r;
+    }
+
+public double getCircumference()
+    {
+    	return 2*Math.PI*radius;
+    }
+    public double getArea()
+    {
+    return radius*radius*Math.PI;
+    }
+ }
  
-final double PI=3.14;
-
-//2 PRIVATE DATA MEMBERS
-
- private double radius=1.0; 
- private String color="red";  
- 
-//2 OVERLOADING CONSTRUCTOR
-
-	Circle()
-	    {
-              this.radius=1.0;
-	    }
-	
-	Circle(double radius,String color)
-	    {
-              this.radius = radius;
-              this.color  = color; 
-	    }
-
-//2 PUBLIC FUNCTIONS
-
-	public void getradius()
-                   {
-			System.out.println("Radius: "+radius);
-                   }
-        public void getArea()
-		{
-			double area= PI * radius * radius;
-			System.out.println("Area : "+area);             
- 		}
-
- }  
-
-
-public class Cylinder extends Circle
-{
-final double Pi=3.14;
-  double height,volume;
-   Cylinder()
-	{
-	  height= 10;
-	}
-
-
-   Cylinder(int h,double radius,String color)
-	{
-	  
-	  super(radius,color);
-	  height= h;
-	}
-
-	// invoking the instance variable of parent class
-    height = super.radius;
-
-   void getradius()
-    {
-        // calling the overriden method
-        super.getradius();
-        System.out.println("This is the Cylinder class");
-        
-        // printing the name
-        System.out.println(height);
+ class Cylinder extends Circle
+ { 
+   double height;
+   public Cylinder(double r,double h)
+   { 
+    super(r);
+    height = h;
     }
-
-	public void getVolume(double ht)
-		{
-		   volume= Pi * super.radius * super.radius * ht ;
-		   System.out.println("Volume: "+volume);
-		}
-  
-}
-
-class  A
-{
-   public static void main(String[] args)
-{
-   // instance of the derived class
-        Cylinder cy = new Cylinder();
-	
-        
-        // calling the unoverriden method print
-        cy.getradius();
-	cy.getVolume(20);
-
-}
-
-}
-
-
-_______________________________________________________________________________________________
-
-//TEST  PROGRAM  THAT USES CYLINDER CLASS FUNCTION
-
-//file name: Test.java
-package b;
-
-import Classtest.Cylinder;
-import Classtest.Circle;
-
-public class Test extends Cylinder
-{
-
- private void printMessage()
-    {
-        System.out.println(" Test Class ");
+    public double getArea(){
+    return 2*super.getArea()+getCircumference()*height;
     }
-  
-    public static void main(String[] args)
+    public double getVolume()
     {
-        Cylinder c3 = new Cylinder();
-        c3.getVolume();
+     return super.getArea()*height;
+     }
     }
-	
+   
+classTest{
+ public static void main(String[]args)
+ {
+   Scanner sc = new Scanner(System.in);
+   double r = sc.nextDouble();
+   double h;
+   h=sc.nextDouble();
+   
+   Cylinder obj1 = new Cylinder(r,h);
+   double result = obj1.getVolume();
+   System.out.println(result);
+   }
 }
