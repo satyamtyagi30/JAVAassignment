@@ -10,80 +10,60 @@ Write a test program that uses Circle class and its features.
 ANS:
 
 
-//file name: Circle.java
-package Classtest;
+class Circle {
 
-public class Circle
-{  
- 
-final double PI=3.14;
+private final double PI = 3.14159;
 
-//2 PRIVATE DATA MEMBERS
+private double radius;
 
- private double radius=1.0; 
- private String color="red";  
- 
-//2 OVERLOADING CONSTRUCTOR
+public Circle() {
 
-	Circle()
-	    {
-              this.radius=1.0;
-	    }
-	
-	Circle(double y,String z)
-	    {
-              this.radius = y;
-              this.color  = z; 
-	    }
+radius = 0.0;
 
-//2 PUBLIC FUNCTIONS
+}
 
-	public void getradius()
-                   {
-			System.out.println("Radius: "+radius);
-                   }
-        public void getArea()
-		{
-			double area= PI * radius * radius;
-			System.out.println("Area : "+area);             
- 		}
+public Circle(double r) {
 
- }  
+radius = r;
 
-class  A
-{
-   public static void main(String[] args)
-{
-   Circle c1=new Circle();
-   Circle c2=new Circle(20,"blue");
-   c1.getradius();
-   c1.getarea();
-   c2.getradius();
-   c2.getarea();
+}
+
+public void setRadius(double r) {
+
+radius = r;
+
+}
+
+public double getRadius() {
+
+return radius;
+
+}
+
+public double getArea() {
+
+return PI * radius * radius;
+
 }
 
 }
-_______________________________________________________________________________________________
 
-//TEST  PROGRAM  THAT USES CIRCLE CLASS FUNCTION
+class CircleTest {
 
-//file name: Test.java
-package b;
+public static void main(String[] args) {
 
-import Classtest.Circle;
+Circle circle1 = new Circle();
 
-public class Test extends Circle
-{
+Circle circle2 = new Circle(3.5);
 
- private void printMessage()
-    {
-        System.out.println(" Test Class ");
-    }
-  
-    public static void main(String[] args)
-    {
-        Circle c3 = new Circle();
-        c3.getradius();
-    }
-	
+System.out.println("Area of circle for first object circle1 with radius 0="+circle1.getArea());
+
+System.out.println("Area of circle for second object circle2="+circle2.getArea());
+
+circle1.setRadius(1.5);
+
+System.out.println("Area of circle for first object circle1 with radius 1.5="+circle1.getArea());
+
+}
+
 }
