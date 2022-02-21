@@ -11,57 +11,54 @@ Q4. Create subclass Cylinder which is derived from the Circle
 write a test program to test Cylinder class and its features.
 ANS:
 
-
-
-
-importjava.util.*;
-importjava.io.*;
-
-class Circle {
-
-    double radius;
+class Circle{
+    
+    private double radius;
+    public Circle()
+    {
+        radius =0;
+    }
+    
+    
     public Circle(double r)
     {
-    radius=r;
+        radius =r;
     }
+    
+    
+     public double getRadius()
+    {
+        return radius;
+    }
+}
 
-public double getCircumference()
+class Cylinder extends Circle 
+{
+    
+    private double height;
+    
+    public Cylinder(int r)
     {
-    	return 2*Math.PI*radius;
+        super(r);
     }
-    public double getArea()
+    
+     public Cylinder(int r,int h)
     {
-    return radius*radius*Math.PI;
+        super(r);
+        height = h;
     }
- }
- 
- class Cylinder extends Circle
- { 
-   double height;
-   public Cylinder(double r,double h)
-   { 
-    super(r);
-    height = h;
-    }
-    public double getArea(){
-    return 2*super.getArea()+getCircumference()*height;
-    }
+    
     public double getVolume()
     {
-     return super.getArea()*height;
-     }
+        return 3.14 * getRadius() * getRadius() * height;
     }
-   
-classTest{
- public static void main(String[]args)
- {
-   Scanner sc = new Scanner(System.in);
-   double r = sc.nextDouble();
-   double h;
-   h=sc.nextDouble();
-   
-   Cylinder obj1 = new Cylinder(r,h);
-   double result = obj1.getVolume();
-   System.out.println(result);
-   }
+}
+
+public class Main{
+    
+    public static void main(String[] args)
+    {
+        Cylinder c = new Cylinder(10,30);
+        System.out.println("volume is "+ c.getVolume());
+    }
 }
