@@ -5,69 +5,29 @@ Output1: ay
 Input2: caaabbbaacdddd
 Output2: Empty String
 
-
-import java.io.*;
-import java.util.*;
-import java.util.Scanner; 
-
-public class Solution
-{
-
-   static String solve(string s)
-
-    {
-
-        int i=0, n=s.length();
-
-        String res;
-
-        while(i<n)
-
+class Solution {
+    public String removeDuplicates(String S) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for (char c : S.toCharArray()) 
         {
-
-            if(i<n-1 && s[i]==s[i+1])
-
-            {
-
-                while(i<n-1 && s[i]==s[i+1])
-
-                ++i;
-
+            int size = sb.length();
+            if (size > 0 && sb.charAt(size - 1) == c)
+            { 
+                sb.deleteCharAt(size - 1); 
             }
-
+            
             else
-
-                res+=s[i];
-
-                
-
-            i++;
-
+            { 
+                sb.append(c); 
+            }
         }
-
-        return res;
-
+        
+        return sb.toString();
+        
     }
 
-    static String remove(string s)
-
-    {    
-
-        String res=s, temp="";
-
-        while(temp.size()!=res.length())
-
-        {
-
-            temp=res;
-
-            res=solve(res);
-
-        }
-
-        return res;
-
-    }
     
  public static void main(String args[])
   {
@@ -76,7 +36,7 @@ public class Solution
 
     String str = sc.nextLine();  // Read user input
     System.out.println("Result is: " );
-    System.out.println(remove(str));
+    System.out.println(removeDuplicates(str));
  
   }
 
